@@ -14,8 +14,6 @@ $(".submit").on("click", function(){
     appendHero();
 })
 
-
-
 // Adding click event listen listener to all superhero buttons
 $(".hero-btns").on("click", ".btn-success", function() {
   // Grabbing and storing the data-hero property value from the button
@@ -64,8 +62,10 @@ $(".hero-btns").on("click", ".btn-success", function() {
         // Prependng the heroDiv to the HTML page in the "#gifs-appear-here" div
         $("#gifs-appear-here").prepend(heroDiv);
       }
+      
 
-$(".gif").on("click", function() {
+// allows user click to start/stop a gif animation
+$("img").on("click", function() {
     // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
     var state = $(this).attr("data-state");
     console.log(this);
@@ -79,7 +79,8 @@ $(".gif").on("click", function() {
       $(this).attr("src", $(this).attr("data-still"));
       $(this).attr("data-state", "still");
     }
+    console.log(state)
   });
 
-    });
+});
 });
