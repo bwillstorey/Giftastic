@@ -1,3 +1,13 @@
+// array with starter buttons
+var topics = ["ironman", "batman", "hulk", "spiderman", "superman", "wonder woman", "aquaman", "wolverine", "dr strange", "black panther", "cyclops", "ant man", "captain america", "green lantern", "deadpool"];
+
+for (var i = 0; i < topics.length; i++) {
+  var newBtn = $("<button type='button' class='btn btn-success' data-hero=''></button>");
+  var addHero = newBtn.text(topics[i]).attr("data-hero", topics[i]);
+
+  $(".hero-btns").append(addHero);
+}
+
 // Add new superhero button
 $(".submit").on("click", function(){
 
@@ -23,31 +33,24 @@ $(".hero-btns").on("click", ".btn-success", function() {
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
     hero + "&api_key=vM2sCUJc09QSdYH3QRcMRoso1s9zwtH0&limit=10";
     
-  // Performing an AJAX request with the queryURL
+  //AJAX request with the queryURL
   $.ajax({
     url: queryURL,
     method: "GET"
-  })
-    // After data comes back from the request
-    .then(function(response) {
+  }).then(function(response) {
 
       console.log(queryURL);
       console.log(response);
       
-      // storing the data from the AJAX request in the results variable
       var results = response.data;
 
-      // Looping through each result item
+      // Loop through each result
       for (var i = 0; i < results.length; i++) {
 
-        // Creating and storing a div tag
         var heroDiv = $("<div class='hero-div'>");
-
-        // Creating a paragraph tag with the result item's rating
         var p = $("<p>").text("Rating: " + results[i].rating);
-
-        // Creating and storing an image tag
         var heroImage = $("<img>");
+
         // Setting the src attribute of the image to a property pulled off the result item
         heroImage.attr("src", results[i].images.fixed_height_still.url);
         heroImage.attr("data-still", results[i].images.fixed_height_still.url);
@@ -66,12 +69,9 @@ $(".hero-btns").on("click", ".btn-success", function() {
 
 // allows user click to start/stop a gif animation
 $("img").on("click", function() {
-    // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
     var state = $(this).attr("data-state");
     console.log(this);
-    // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-    // Then, set the image's data-state to animate
-    // Else set src to the data-still value
+
     if (state === "still") {
       $(this).attr("src", $(this).attr("data-animate"));
       $(this).attr("data-state", "animate");
