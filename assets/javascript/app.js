@@ -1,4 +1,17 @@
-// Adding click event listen listener to all buttons
+// Add new superhero button
+$(".submit").on("click", function(){
+
+    // create new button
+    var newBtn = $("<button type='button' class='btn btn-success' data-hero=''></button>");
+    var newHero = $("textarea").val();
+    var addHero = newBtn.text(newHero).attr("data-hero", newHero);
+
+    // append btn to hero-btns div
+    $(".hero-btns").append(addHero);
+
+})
+
+// Adding click event listen listener to all superhero buttons
 $(".btn-success").on("click", function() {
   // Grabbing and storing the data-hero property value from the button
   var hero = $(this).attr("data-hero");
@@ -24,7 +37,7 @@ $(".btn-success").on("click", function() {
       for (var i = 0; i < results.length; i++) {
 
         // Creating and storing a div tag
-        var heroDiv = $("<div>");
+        var heroDiv = $("<div class='hero-div'>");
 
         // Creating a paragraph tag with the result item's rating
         var p = $("<p>").text("Rating: " + results[i].rating);
@@ -45,18 +58,8 @@ $(".btn-success").on("click", function() {
         // Prependng the heroDiv to the HTML page in the "#gifs-appear-here" div
         $("#gifs-appear-here").prepend(heroDiv);
       }
-// Add new superhero button
-$(".submit").on("click", function(){
 
-    // create new button
-    var newBtn = $("<button type='button' class='btn btn-success' data-hero=''></button>");
-    var newHero = $("textarea").val();
-    var addHero = newBtn.text(newHero).attr("data-hero", newHero);
 
-    // append btn to hero-btns div
-    $(".hero-btns").append(addHero);
-
-})
 
 $(".gif").on("click", function() {
     // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
@@ -76,4 +79,3 @@ $(".gif").on("click", function() {
 
     });
 });
-

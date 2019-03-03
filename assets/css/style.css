@@ -6,10 +6,24 @@ label {
     font-weight: bold;
 }
 
-div {
+.hero-div p {
+    max-width: 150px;
+    display: block;
+    margin-left: 10px;
+} 
+
+div, div#gifs-appear-here .hero-div {
     display: inline;
 }
 
-div p {
-    max-width: 350px;
+.hero-div {
+    float: left;
+}
+
+img {
+    margin: 10px;
+}
+
+form {
+    margin-right: 10px;
 }
