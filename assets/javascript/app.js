@@ -2,7 +2,7 @@
 $(".btn-success").on("click", function() {
   // Grabbing and storing the data-hero property value from the button
   var hero = $(this).attr("data-hero");
-
+    console.log(hero);
   // Constructing a queryURL using the hero name
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
     hero + "&api_key=vM2sCUJc09QSdYH3QRcMRoso1s9zwtH0&limit=10";
@@ -32,7 +32,11 @@ $(".btn-success").on("click", function() {
         // Creating and storing an image tag
         var heroImage = $("<img>");
         // Setting the src attribute of the image to a property pulled off the result item
-        heroImage.attr("src", results[i].images.fixed_height.url);
+        heroImage.attr("src", results[i].images.fixed_height_still.url);
+        heroImage.attr("data-still", results[i].images.fixed_height_still.url);
+        heroImage.attr("data-animate", results[i].images.fixed_height.url);
+        heroImage.attr("data-state", "still");
+        heroImage.attr("class", "gif");
 
         // Appending the paragraph and image tag to the heroDiv
         heroDiv.append(p);
@@ -41,9 +45,6 @@ $(".btn-success").on("click", function() {
         // Prependng the heroDiv to the HTML page in the "#gifs-appear-here" div
         $("#gifs-appear-here").prepend(heroDiv);
       }
-    });
-});
-
 // Add new superhero button
 $(".submit").on("click", function(){
 
@@ -60,6 +61,7 @@ $(".submit").on("click", function(){
 $(".gif").on("click", function() {
     // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
     var state = $(this).attr("data-state");
+    console.log(this);
     // If the clicked image's state is still, update its src attribute to what its data-animate value is.
     // Then, set the image's data-state to animate
     // Else set src to the data-still value
@@ -71,3 +73,7 @@ $(".gif").on("click", function() {
       $(this).attr("data-state", "still");
     }
   });
+
+    });
+});
+
