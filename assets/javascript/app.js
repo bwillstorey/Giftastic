@@ -1,5 +1,5 @@
 // Adding click event listen listener to all buttons
-$("button").on("click", function() {
+$(".btn-success").on("click", function() {
   // Grabbing and storing the data-hero property value from the button
   var hero = $(this).attr("data-hero");
 
@@ -43,6 +43,19 @@ $("button").on("click", function() {
       }
     });
 });
+
+// Add new superhero button
+$(".submit").on("click", function(){
+
+    // create new button
+    var newBtn = $("<button type='button' class='btn btn-success' data-hero=''></button>");
+    var newHero = $("textarea").val();
+    var addHero = newBtn.text(newHero).attr("data-hero", newHero);
+
+    // append btn to hero-btns div
+    $(".hero-btns").append(addHero);
+
+})
 
 $(".gif").on("click", function() {
     // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
