@@ -5,7 +5,7 @@
 
 ## Technology
 - HTML5, CSS3, Bootstrap, Javascript, jQuery, AJAX, APIs
-- Live Demo: https://bwillstorey.github.io/
+- Live Demo: https://bwillstorey.github.io/Giftastic/
 
 ## About
 A GIF creator developed using the Giphy API to dynamically add superhero gifs to the page. In addition to the API, jQuery, Javascript, Bootstrap, and HTML5/CSS3 were used to build the application. The user is able to find GIFs using either the preselected hero buttons or has the ability to add their own hero. Buttons respond to click events to manipulte the DOM adding either a new superhero button, a new set of relevant GIFs, or responding to a gif click to animate or pause a GIF animation.
