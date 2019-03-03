@@ -1,11 +1,11 @@
 // Adding click event listen listener to all buttons
 $("button").on("click", function() {
-  // Grabbing and storing the data-animal property value from the button
-  var animal = $(this).attr("data-animal");
+  // Grabbing and storing the data-hero property value from the button
+  var hero = $(this).attr("data-hero");
 
-  // Constructing a queryURL using the animal name
+  // Constructing a queryURL using the hero name
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-    animal + "&api_key=vM2sCUJc09QSdYH3QRcMRoso1s9zwtH0&limit=10";
+    hero + "&api_key=vM2sCUJc09QSdYH3QRcMRoso1s9zwtH0&limit=10";
     
   // Performing an AJAX request with the queryURL
   $.ajax({
@@ -24,22 +24,22 @@ $("button").on("click", function() {
       for (var i = 0; i < results.length; i++) {
 
         // Creating and storing a div tag
-        var animalDiv = $("<div>");
+        var heroDiv = $("<div>");
 
         // Creating a paragraph tag with the result item's rating
         var p = $("<p>").text("Rating: " + results[i].rating);
 
         // Creating and storing an image tag
-        var animalImage = $("<img>");
+        var heroImage = $("<img>");
         // Setting the src attribute of the image to a property pulled off the result item
-        animalImage.attr("src", results[i].images.fixed_height.url);
+        heroImage.attr("src", results[i].images.fixed_height.url);
 
-        // Appending the paragraph and image tag to the animalDiv
-        animalDiv.append(p);
-        animalDiv.append(animalImage);
+        // Appending the paragraph and image tag to the heroDiv
+        heroDiv.append(p);
+        heroDiv.append(heroImage);
 
-        // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
-        $("#gifs-appear-here").prepend(animalDiv);
+        // Prependng the heroDiv to the HTML page in the "#gifs-appear-here" div
+        $("#gifs-appear-here").prepend(heroDiv);
       }
     });
 });
