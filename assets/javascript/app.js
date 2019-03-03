@@ -7,12 +7,17 @@ $(".submit").on("click", function(){
     var addHero = newBtn.text(newHero).attr("data-hero", newHero);
 
     // append btn to hero-btns div
-    $(".hero-btns").append(addHero);
+    function appendHero () {
+        $(".hero-btns").append(addHero);
+    }
 
+    appendHero();
 })
 
+
+
 // Adding click event listen listener to all superhero buttons
-$(".btn-success").on("click", function() {
+$(".hero-btns").on("click", ".btn-success", function() {
   // Grabbing and storing the data-hero property value from the button
   var hero = $(this).attr("data-hero");
     console.log(hero);
@@ -27,9 +32,10 @@ $(".btn-success").on("click", function() {
   })
     // After data comes back from the request
     .then(function(response) {
-      console.log(queryURL);
 
+      console.log(queryURL);
       console.log(response);
+      
       // storing the data from the AJAX request in the results variable
       var results = response.data;
 
@@ -58,8 +64,6 @@ $(".btn-success").on("click", function() {
         // Prependng the heroDiv to the HTML page in the "#gifs-appear-here" div
         $("#gifs-appear-here").prepend(heroDiv);
       }
-
-
 
 $(".gif").on("click", function() {
     // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
